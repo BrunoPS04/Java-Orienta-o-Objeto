@@ -40,16 +40,20 @@ public class Crud extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String nome = txtNome.getText();
+                boolean usuarioEncontrado = false;
                 for (Usuario usuario : usuarios) {
                     if (usuario.getNome().equals(nome)) {
                         txtNome.setText(usuario.getNome());
                         txtEmail.setText(usuario.getEmail());
                         txtIdade.setText(String.valueOf(usuario.getIdade()));
-                        JOptionPane.showMessageDialog(null, "Usuário localizado com sucesso!");
+                        usuarioEncontrado = true;
                         break;
-                    }else {
-                        JOptionPane.showMessageDialog(null, "Usuário não encontrado!");
                     }
+                }
+                if (usuarioEncontrado) {
+                    JOptionPane.showMessageDialog(null, "Usuário localizado com sucesso!");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Usuário não encontrado!");
                 }
             }
         });
